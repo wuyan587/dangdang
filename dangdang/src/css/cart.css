@@ -1,0 +1,372 @@
+.cart_warp{
+    width: 960px;
+    margin: 0 auto;
+    padding: 17px 0 0;
+}
+.logo_line{
+    width: 100%;
+    border-bottom: 4px solid #ff2832;
+    height: 100px;
+}
+.warp{
+    width: 960px;
+    margin: 0 auto;
+}
+.logo_line .logo{
+    padding: 20px 0 0 15px;
+}
+.procedur{
+    float: right;
+    width: 634px;
+    height: 36px;
+    background: url(../img/procedure_bg.png) 0 0 no-repeat;
+    font: bold 14px/36px "Microsoft Yahei";
+    color: #646464;
+    margin: 30px 0 0;
+}
+.procedur span{
+    width: 200px;
+    display: inline-block;
+    text-align: center;
+}
+.procedur .active{
+    color: #fff;
+    width: 206px;
+}
+.add{
+    width: 100%;
+    background-color: #fafafa;
+}
+.address{
+    height: 22px;
+    line-height: 22px;
+    margin: 15px 0;
+    background-color: #fcfcfc;
+    border: 1px solid #ebebeb;
+    padding: 0 15px;
+    border-radius: 12px;
+    display: inline-block;
+    font-size: 12px;
+}
+.address>span{
+    width: 22px;
+    height: 22px;
+    background: url(../img/icon_sprite.png) 0 5px no-repeat;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: bottom;
+}
+.select_add{
+    position: relative;
+    display: inline-block;
+    z-index: 1003;
+}
+.select_add .choose{
+    color: #646464;
+    border: 1px solid #ebebeb;
+    border-width: 0 1px;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 14px 0 5px;
+    background: url(../img/icon_sprite.png) no-repeat right -53px #fff;
+    cursor: pointer;
+    position: relative;
+    z-index: 88;
+    display: block;
+}
+.select_add .add_list{
+    position: absolute;
+    width: 369px;
+    border: 1px solid #ebebeb;
+    background-color: #fff;
+    z-index: 1003;
+    padding: 0 2px;
+    font-size: 12px;
+    top: 22px;
+    left: 0;
+}
+.shop_title {
+    line-height: 36px;
+    height: 36px;
+    margin-top: 10px;
+}
+.shop_title li{
+    float: left;
+    text-align: center;
+    font-size: 12px;
+}
+
+a.checknow{
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #bcbcbc;
+    background-color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    margin: 0 10px 0 0;
+    vertical-align: text-bottom;
+}
+.shop_title .f1{
+    width: 202px;
+    text-align: left;
+}
+.shop_title .f2{
+    width: 280px;
+    text-align: left;
+}
+.shop_title .f3,.shop_list .row3{
+    width: 130px;
+}
+.shop_title .f4,.shop_list .row4{
+    width: 130px;
+}
+.shop_title .f5,.shop_list .row5{
+    width: 70px;
+}
+.shop_Ttitle{
+    color: #323232;
+    font-weight: bold;
+    line-height: 24px;
+    height: 24px;
+    margin: 10px 0;
+    padding-left: 15px;
+    border-collapse:separate;
+}
+.shop_list td {
+    vertical-align: top;
+    padding-top: 15px;
+    position: relative;
+    line-height: 22px;
+    text-align: center;
+    border-bottom: 1px solid #e4e4e4;
+}
+.shop_Ttitle a{
+    color: #323232;
+}
+.shop_icon {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background: url(../img/icon_sprite.png) 0 -30px no-repeat;
+    margin: 0 6px 0 0;
+    vertical-align: text-bottom;
+}
+.shop_list{
+    width: 958px;
+    border: 1px solid #ebebeb;
+    background-color: #fafafa;
+    margin-bottom: 40px;
+}
+.shop_list .row1{
+    padding: 0 0 0 10px;
+    width: 42px;
+    vertical-align: middle;
+}
+
+.shop_list .bb_none td {
+    border-bottom: none 0;
+}
+.tree_first .row_img {
+    background: url(../img/tree.png) 40px 60px no-repeat;
+}
+.shop_list .row_img {
+    padding: 20px 20px 20px 0;
+    width: 80px;
+    position: relative;
+    z-index: 9;
+    font-size: 0;
+    line-height: 0;
+}
+.shop_list .row_name {
+    width: 330px;
+    line-height: 18px;
+    text-align: left;
+    position: relative;
+    padding-top: 17px;
+}
+.shop_list .row_name .name {
+    display: block;
+    width: 100%;
+    height: 36px;
+    overflow: hidden;
+    margin-bottom: 27px;
+}
+.shop_list .row_name .name>a{
+    font-size: 12px;
+    color: #323232;
+}
+.shop_list .amount {
+    border: 1px solid #dcdcdc;
+    height: 28px;
+    width: 94px;
+    line-height: 28px;
+    font-size: 14px;
+    margin: 5px auto;
+    overflow: hidden;
+    display: block;
+}
+
+.shop_list .amount a {
+    display: block;
+    float: left;
+    height: 28px;
+    width: 28px;
+    background-color: #f4f4f4;
+}
+.shop_list .amount input {
+    width: 36px;
+    height: 28px;
+    line-height: 28px\9;
+    float: left;
+    padding: 0;
+    text-align: center;
+    border: 1px solid #dcdcdc;
+    border-width: 0 1px;
+    background-color: #fff;
+    font-weight: bold;
+}
+.shop_list .row3 span{
+    font-size: 12px;
+}
+.shop_list .row4>span{
+    font-size: 12px;
+    color: red;
+}
+.shop_list .row5 span{
+    display: block;
+}
+.shop_list .row5 span a{
+    font-size: 12px;
+}
+
+.shop_list .row1 {
+    padding: 0 0 0 10px;
+    width: 42px;
+    vertical-align: middle;
+
+}
+.tree_last .row_img {
+    background: url(../img/tree_last.png) 40px -288px no-repeat;
+    position: relative;
+}
+
+.shop_list .event_box {
+    padding: 0;
+}
+.shop_list .event_box .event {
+    text-align: left;
+    color: #4f4f4f;
+    font-size: 12px;
+}
+.shop_list .ebtn {
+    padding: 0 16px 0 6px;
+    display: inline-block;
+    height: 22px;
+    line-height: 22px;
+    color: #fff;
+    border-radius: 2px;
+    background: url(../img/icon_sprite.png) right -177px no-repeat #f66;
+}
+.shop_list .eblue {
+    background-color: #54d1ff;
+}
+.shop_list .total td.row_img {
+    text-align: center;
+    color: #323232;
+    font-weight: bold;
+    line-height: 22px;
+    font-size: 12px;
+    padding: 15px 20px 15px 0;
+}
+.shop_list .total td.row4 {
+    text-align: right;
+    line-height: 18px;
+    position: relative;
+    padding-top: 10px;}
+.shop_list .total td.row4 .big.ooline {
+        padding-top: 8px;
+    }
+.shop_list .total td.row4 .big {
+        font-size: 16px;
+    }
+.shop_list .total td.row4 .alignright {
+        padding-right: 144px;
+    }
+.shop_list .total td.row4 .shipping_tip {
+        position: absolute;
+        left: -66px;
+        top: 18px;
+    }
+.shop_list .total td.row4 .shipping_tip .more {
+        padding: 0 8px 0 4px;
+        background: url(../img/pop_shipping.png) 65px 7px no-repeat;
+    }
+.shop_list a.more {
+        color: #1a66b3;
+    }
+.clearshop{
+    width: 960px;
+    height: 72px;
+    z-index: 10;
+    margin: 20px auto;
+    padding: 0 62px;
+    background: url(../img/shopping_total.png) 0 center no-repeat;
+    position: relative;
+}
+.clearshop_right{
+    float: right;
+    margin: 18px 0 0;
+    width: 530px;
+    position: relative;
+}
+ .total_btn {
+    float: right;
+    display: block;
+    width: 116px;
+    height: 38px;
+    font: bold 18px/38px "Microsoft Yahei";
+    color: #fff;
+    background-color: #ff2832;
+    border-radius: 2px;
+    text-align: center;
+    margin-top: 4px;
+}
+.money{
+    padding-right: 30px;
+    line-height: 24px;
+    float: right;
+}
+.money p span:first-child{
+    display: inline-block;
+    width: 114px;
+    text-align: right;
+    padding: 0 8px 0 0;
+    font-size: 12px;
+}
+.money p .price{
+
+    display: inline-block;
+    font-size: 18px;
+    color: #ff2832;
+}
+.clearshop_left{
+    float: left;
+    line-height: 58px;
+    width: 430px;
+    position: relative;
+    font-size: 12px;
+}
+.delete{
+    margin-left: 28px;
+}
+.clearshop_left span{
+    margin-left: 80px;
+}
+i{
+    font-style: normal;
+}

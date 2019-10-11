@@ -1,0 +1,274 @@
+body {
+    font-size: 12px;
+}
+a{
+    text-decoration: none;
+}
+.login_header{
+    width: 1200px;
+    height:60px;
+    margin: 12px auto 14px;
+}
+.login_header>a{
+    float: left;
+    margin-top:7px;
+}
+.opinion {
+    margin-top:34px;
+    float: right; 
+}
+.opinion span{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: url(../img/未标题-1.jpg) no-repeat 0 0;
+    vertical-align: middle;
+}
+.opinion a{
+    color:#787878;
+    vertical-align: middle;
+}
+/* 主体部分 */
+section {
+    width: 1200px;
+    margin: 0 auto;
+}
+section>a{
+    margin-top:40px;
+    display:inline-block;
+    width: 680px;
+    height: 510px;
+    background:url(../img/2019092812362673544.jpg) no-repeat -650px -40px;
+}
+/* 登陆框主体 */
+section .login{
+    background: #fff;
+    float: right;
+    width: 362px;
+    color: #6e6e6e;
+    position: relative;
+    border: 1px solid #eef2f4;
+    box-shadow: 0px 1px 2px #eee;
+    margin-top:60px;
+}
+section .login .tips {
+    width:100%;
+    line-height: 24px;
+    color: #828282;
+    border: 1px solid #fedbd1;
+    background: #fef7f5;
+    
+}
+
+section .login .tips span::before{
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-top:4px;
+    background: url(../img/tips.jpg) no-repeat 0 0;
+    background-size: contain;
+}
+
+.login_content{
+    position: relative;
+    padding:15px 25px 15px 15px;
+}
+/* 二维码 */
+.erweima{
+    float: right;
+
+}
+.erweima>p{
+    position: absolute;
+    top: 7px;
+    right: 68px;
+    width:90px;
+    border: 1px solid #fedbd1;
+    background-color: #fef7f5;
+    color: #ff572a;
+    padding: 4px 6px 4px 24px;
+}
+.erweima>p span{
+    position: absolute;
+    display: inline-block;
+    width: 15px;
+    height: 17px;
+    left: 5px;
+    background: url(../img/dun.jpg) no-repeat 0 0;
+    background-size: contain;
+}
+.erweima>p::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 8px;
+    height: 13px;
+    top:4px;
+    right: -8px;
+    background: url(../img/arrow_right_icon.png) no-repeat 0 0;
+    background-size: contain;
+}
+.erweima>a{
+    display: block;
+    width: 55px;
+    height: 55px;
+    background: url(../img/scan_icon.png);
+    position: absolute;
+    right: 5px;
+    top: 7px;
+    z-index: 10;
+}
+/* 登陆框 */
+.input {
+    position: relative;
+    float: left;
+    width: 311px;
+}
+.input>p{
+    font-size: 18px;
+    color: #3c3c3c;
+   margin-top:5px;
+}
+.input .username,.input .password,.input .submit{
+
+    height: 36px;
+    border: 1px solid #e6e6e6;
+    width: 310px;
+    border-radius: 2px;
+}
+.input .username span,.input .password span{
+    width: 30px;
+    margin-right: 10px;
+    height: 36px;
+    float: left;
+    background: url(../img/icon_20150706.png) no-repeat;
+}
+.input .username{
+    margin-top:20px;
+}
+.input .username span{
+    background-position:  10px -110px;
+}
+.input .password span {
+    background-position: 10px -150px;;
+}
+.input .submit{
+    display: block;
+    text-align: center;
+    line-height: 36px;
+    font-size: 18px;
+    color: white;
+    background: #ff2832;
+} 
+.input div>input{
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    border: 0;
+    color: #333;
+    padding: 0;
+    width: 270px;
+}
+.input div>p{
+    display: block;
+    height:12px;
+    width: 100%;
+}
+/* 验证 */
+.Vcode {
+    font-size: 14px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding: 0;
+    width: 312px;
+}
+.Vcode .Vcode-operate {
+    color: #555;
+    height: 16px;
+    line-height: 16px;
+    margin: 0 1px 8px;
+    position: relative;
+}
+.Vcode .Vcode-prompt {
+    font-size: 14px;
+    opacity: 1;
+    position: absolute;
+    transform: translate(0px, 0px);
+    transition: all 0.25s ease-out 0s;
+    vertical-align: baseline;
+    visibility: visible;
+}
+.Vcode .Vcode-refresh {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.Vcode .Vcode-background {
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    float: left;
+    margin: 0 1px 0;
+    height: 76px;
+    width: 76px;
+}
+
+.auto_login {
+    width: 310px;
+    height: 27px;
+    line-height: 22px;
+    padding-top: 7px;
+    overflow: hidden;
+}
+.auto_login a {
+    float: right;
+    font-size: 12px;
+}
+.auto_login input {
+    vertical-align: bottom;
+}
+.auto_login span{
+   font-size: 12px;
+   vertical-align: middle;
+}
+.register .register_btn {
+    font-size: 12px;
+    float: right;
+    color: #6e6e6e;
+}
+.register>span{
+    line-height: 24px;
+    font-size: 12px;
+}
+.partner dt {
+    float: left;
+    margin-right: 5px;
+}
+.partner dt a {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: url(../img/icon_20150706.png) no-repeat;
+    text-indent: -100px;
+    overflow: hidden;
+}
+.partner dt .qq{
+    background-position: 0 -260px;
+}
+.partner dt .wx{
+    background-position: 0 -280px;;
+}
+.partner dt .wb{
+    background-position: 0 -300px;
+}
+.partner dt .alpay{
+    background-position: 0 -320px;
+}
+.partner dd {
+    padding-left: 10px;
+    position: relative;
+    float: left;
+    line-height: 20px;
+}
