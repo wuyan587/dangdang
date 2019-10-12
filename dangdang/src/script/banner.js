@@ -15,7 +15,7 @@
             type: 'normal'
         }
         $.extend(settings, options);
-        let index = 0, timer = null,_this=$(this);
+        let index = 0, timer = null, _this = $(this), $width = $(this).find(settings.items).first().width();
         init(settings.type);
         $(this).each(function () {
             let _this = $(this);
@@ -47,15 +47,33 @@
             })
             _this.find(settings.prev).on('click', function () {
                 index--;
-                if (index < 0)
-                    index = _this.find(settings.btn).size() - 1;
-                changetype(settings.type, index);
+                if (settings.type == "ppt") {
+                    if (index < 0) {
+                        changetype(settings.type, index);
+                        index = _this.find(settings.btn).size() - 1;
+                    }
+                } else {
+                    if (index < 0)
+                        index = _this.find(settings.btn).size() - 1;
+                        
+                    changetype(settings.type, index);
+                }
+
             })
             _this.find(settings.next).on('click', function () {
                 index++;
-                if (index > _this.find(settings.btn).size() - 1)
-                    index = 0;
+                if (settings.type == "ppt") {
                 changetype(settings.type, index);
+                console.log(index);
+                if (index >= _this.find(settings.btn).size() ) {
+                        index = 0;
+                    }
+                } else {
+                    if (index > _this.find(settings.btn).size() - 1)
+                        index = 0;
+                    changetype(settings.type, index);
+                }
+
             })
             function normalchange(a) {
                 _this.find(settings.btn).eq(a).addClass('active').siblings().removeClass('active');
@@ -70,60 +88,75 @@
                 }, 1000)
             }
             function pptchange(a) {
-                console.log(_this.find(settings.items).first());
-                _this.find(settings.btn).eq(a).addClass('active').siblings().removeClass('active');
-                _this.find('.banner_item').stop(true).animate({
-                    left:-_this.find(settings.items).first().width()*(a+1)
-                })
+                if (a <= -1) {
+                    _this.find(settings.btn).eq(_this.find(settings.btn).length-1).addClass('active').siblings().removeClass('active');
+                    _this.find('.banner_item').stop(true).animate({
+                        left: -$width * (a+1)
+                    }).css({
+                        left: -$width *  _this.find(settings.btn).length
+                    })
+                } else if (a >= _this.find(settings.items).length) {
+                    _this.find(settings.btn).eq(0).addClass('active').siblings().removeClass('active');
+                    _this.find('.banner_item').stop(true).animate({
+                        left: -$width * (a+1)
+                    }).css(
+                        "left",-$width
+                    )
+                } else {
+                    _this.find(settings.btn).eq(a).addClass('active').siblings().removeClass('active');
+                    _this.find('.banner_item').stop(true).animate({
+                        left: -$width * (a+1)
+                    })
+                }
+                
             }
             function changetype(str, a) {
                 switch (str) {
                     case 'normal': normalchange(a); break;
                     case 'opacity': opchange(a); break;
-                    case 'ppt':pptchange(a);break;
+                    case 'ppt': pptchange(a); break;
                 }
             }
-           
+
         })
-        function init(str){
-            switch(str){
+        function init(str) {
+            switch (str) {
                 case 'normal':
-                        _this.find(settings.items).each(function () {
-                            $(this).hide().css({
-                                opacity: 1
-                            });
-                        })
-                        _this.find(settings.items).eq(index).show();
+                    _this.find(settings.items).each(function () {
+                        $(this).hide().css({
+                            opacity: 1
+                        });
+                    })
+                    _this.find(settings.items).eq(index).show();
                     break;
                 case 'opacity':
-                        _this.find(settings.items).each(function () {
-                            $(this).show().css({
-                                opacity: 0
-                            });
-                        })
-                        _this.find(settings.items).eq(index).css({
-                            opacity: 1
-                        })    
-                break;
+                    _this.find(settings.items).each(function () {
+                        $(this).show().css({
+                            opacity: 0
+                        });
+                    })
+                    _this.find(settings.items).eq(index).css({
+                        opacity: 1
+                    })
+                    break;
                 case 'ppt':
-                        _this.find(settings.items).each(function () {
-                            $(this).show().css({
-                                opacity: 1,
-                                float:'left',
-                                position:'static'
-                            });
-                        })
-                        let a=_this.find(settings.items).first().clone();
-                        let b=_this.find(settings.items).last().clone();
-                        a.appendTo(_this.find('.banner_item'));
-                        b.prependTo(_this.find('.banner_item'));
-                        _this.find('.banner_item').css({
-                            position:'absolute',
-                            float:'left',
-                            left:-_this.find(settings.items).first().width(),
-                            width:_this.find(settings.items).first().width()*_this.find('.banner_item li').length
-                        })
-                        
+                    _this.find(settings.items).each(function () {
+                        $(this).show().css({
+                            opacity: 1,
+                            float: 'left',
+                            position: 'static'
+                        });
+                    })
+                    let a = _this.find(settings.items).first().clone();
+                    let b = _this.find(settings.items).last().clone();
+                    a.appendTo(_this.find('.banner_item'));
+                    b.prependTo(_this.find('.banner_item'));
+                    _this.find('.banner_item').css({
+                        position: 'absolute',
+                        float: 'left',
+                        left: -$width,
+                        width: $width * _this.find('.banner_item li').length
+                    })
                     break;
             }
         }
