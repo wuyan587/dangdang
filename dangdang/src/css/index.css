@@ -211,7 +211,7 @@ section .inner>.content .banner_bottom{
     height: 160px;
     overflow: hidden;
     position: relative;
-    background: blue;
+    
 }
 section .content .banner_bottom>a{
     width: 30px;
