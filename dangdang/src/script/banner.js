@@ -3,7 +3,7 @@
     给小按钮的列表加个banner_btn
     给向左按钮加个banner_prev
     给向右按钮加个banner_next
-    type的类型为'normal'和'opacity'
+    type的类型为'normal'和'opacity','ppt'
 */
 (function ($) {
     $.fn.banner = function (options) {
@@ -48,23 +48,20 @@
             _this.find(settings.prev).on('click', function () {
                 index--;
                 if (settings.type == "ppt") {
+                    changetype(settings.type, index);
                     if (index < 0) {
-                        changetype(settings.type, index);
                         index = _this.find(settings.btn).size() - 1;
                     }
                 } else {
                     if (index < 0)
-                        index = _this.find(settings.btn).size() - 1;
-                        
+                        index = _this.find(settings.btn).size() - 1;           
                     changetype(settings.type, index);
                 }
-
             })
             _this.find(settings.next).on('click', function () {
                 index++;
                 if (settings.type == "ppt") {
                 changetype(settings.type, index);
-                console.log(index);
                 if (index >= _this.find(settings.btn).size() ) {
                         index = 0;
                     }
@@ -73,7 +70,6 @@
                         index = 0;
                     changetype(settings.type, index);
                 }
-
             })
             function normalchange(a) {
                 _this.find(settings.btn).eq(a).addClass('active').siblings().removeClass('active');
@@ -92,23 +88,22 @@
                     _this.find(settings.btn).eq(_this.find(settings.btn).length-1).addClass('active').siblings().removeClass('active');
                     _this.find('.banner_item').stop(true).animate({
                         left: -$width * (a+1)
-                    }).css({
-                        left: -$width *  _this.find(settings.btn).length
+                    },function(){
+                        $(this).css("left",-$width *  _this.find(settings.btn).length)
                     })
                 } else if (a >= _this.find(settings.items).length) {
                     _this.find(settings.btn).eq(0).addClass('active').siblings().removeClass('active');
                     _this.find('.banner_item').stop(true).animate({
                         left: -$width * (a+1)
-                    }).css(
-                        "left",-$width
-                    )
+                    },function(){
+                        $(this).css("left",-$width)
+                    })
                 } else {
                     _this.find(settings.btn).eq(a).addClass('active').siblings().removeClass('active');
                     _this.find('.banner_item').stop(true).animate({
                         left: -$width * (a+1)
                     })
                 }
-                
             }
             function changetype(str, a) {
                 switch (str) {

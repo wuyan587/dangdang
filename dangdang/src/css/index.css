@@ -20,6 +20,20 @@ aside>ul li{
     z-index: 1px;
     vertical-align: top;
 }
+
+aside>ul .on{
+    background: #fff;
+    color: #F07828;
+    z-index: 10;
+    margin: -2px -1px -2px 0;
+    padding: 0 1px 0 16px;
+    border: 2px solid #ff2832;
+    border-right: 0;
+}
+aside>ul li.on a {
+    color: #ff2832;
+    font: 16px/30px "Microsoft Yahei";
+}
 aside>ul li a{
     color: #323232;
     font: 14px/32px "Microsoft Yahei";
@@ -90,7 +104,7 @@ aside>.content ul li{
     float: left;
    
 }
-aside>.content .list_1 ul li a{
+aside>.content ul li a{
     font-family: 'Hiragino Sans GB',"Simsun";
     color: #686868;
     display: inline-block;
@@ -98,7 +112,7 @@ aside>.content .list_1 ul li a{
     line-height: 22px;
     padding: 0 10px ;
 }
-aside>.content .list_2 ul li a {
+aside>.content ul li a {
     padding: 0 10px;
     background: url(http://img62.ddimg.cn/upload_img/00111/home/home_sprite_1511.png) no-repeat left -30px;
     display: inline-block;
@@ -205,6 +219,12 @@ section .inner .home_nav{
     border-bottom: 1px solid #e6e6e6;
     border-right: 1px solid #e6e6e6;
 }
+section .inner .home_nav .top{
+    display: block;
+    height: 194px;
+    width: 202px;
+    border-top: 1px solid #e6e6e6;
+}
 .tap_home{
     width: 202px;
     overflow: hidden;
@@ -214,6 +234,11 @@ section .inner .home_nav{
     height: 29px;
     overflow: hidden;
     width: 204px;
+}
+.tap_home_top .active{
+    background-color: #fff;
+    border-bottom: 0;
+    padding-bottom: 1px;
 }
 .tap_home_top li{
     margin-left: -1px;
@@ -237,7 +262,7 @@ section .inner .home_nav{
     overflow: hidden;
 }
 .tap_home_bottom>li{
-    /* display: none; */
+    display: none;
 }
 .tap_home_bottom>li ul{
     height: 130px;
@@ -264,6 +289,56 @@ section .inner .home_nav{
     height: 119px;
     position: relative;
     background: green;
+    overflow: hidden;
+}
+.banner_home .banner_prev,.banner_home .banner_next{
+    position: absolute;
+    top: 41px;
+    width: 30px;
+    height: 43px;
+    overflow: hidden;
+    line-height: 90px;
+    font-size: 0;
+    background-image: url(http://img60.ddimg.cn/upload_img/00111/home/home_sprite_1507.png);
+    background-repeat: no-repeat;
+    background-color: #000;
+    z-index: 20;
+    cursor: pointer;
+    opacity: 0.2;
+}
+.banner_home .banner_prev{
+    background-position: 0 -83px;
+    left: -30px;
+}
+.banner_home .banner_next{
+    background-position: -36px -83px;
+    right: -30px;
+}
+.banner_home .banner_btn{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    text-align: center;
+    z-index: 30;
+}
+.banner_home .banner_btn .active{
+    background-color: #ff2832;
+}
+.banner_home .banner_btn li{
+    float: left;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background: #c8c8c8;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 24px;
+    margin: 0 6px 0 0;
+}
+.banner_home .banner_item{
+    width: 202px;
+    height: 119px;
+    overflow: hidden;
 }
 .act_top{
     border-bottom: 2px solid #3c3c3c;
