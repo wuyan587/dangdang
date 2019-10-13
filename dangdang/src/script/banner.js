@@ -12,7 +12,8 @@
             items: $('.banner_item li'),
             prev: $('.banner_prev'),
             next: $('.banner_next'),
-            type: 'normal'
+            type: 'normal',
+            time:1000
         }
         $.extend(settings, options);
         let index = 0, timer = null, _this = $(this), $width = $(this).find(settings.items).first().width();
@@ -25,7 +26,7 @@
             })
             timer = setInterval(function () {
                 _this.find(settings.next).trigger('click');
-            }, 2000)
+            }, settings.time)
             _this.hover(function () {
                 _this.find(settings.prev).stop(true).animate({
                     left: 0
@@ -43,7 +44,7 @@
                 })
                 timer = setInterval(function () {
                     _this.find(settings.next).trigger('click');
-                }, 2000)
+                }, settings.time)
             })
             _this.find(settings.prev).on('click', function () {
                 index--;
