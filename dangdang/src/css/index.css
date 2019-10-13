@@ -213,6 +213,57 @@ section .inner>.content .banner_bottom{
     position: relative;
     background: blue;
 }
+section .content .banner_bottom>a{
+    width: 30px;
+    height: 43px;
+    overflow: hidden;
+    line-height: 90px;
+    font-size: 0;
+    position: absolute;
+    top: 65px;
+    background-image: url(http://img60.ddimg.cn/upload_img/00111/home/home_sprite_1507.png);
+    background-repeat: no-repeat;
+    background-color: #000;
+    z-index: 20;
+    cursor: pointer;
+    opacity: 0.2;
+}
+section .content .banner_bottom ul{
+    overflow: hidden;
+    position: absolute;
+}
+section .content .banner_bottom .banner_prev{
+    background-position: 0 -83px;
+    left:-46px;
+}
+section .content .banner_bottom .banner_next{
+    background-position: -36px -83px;
+    right:-46px;
+}
+section .content .banner_bottom li{
+    width: 198px;
+    height: 160px;
+    overflow: hidden;
+    float: left;
+    border-right: 1px solid #e6e6e6;  
+}
+section .content .banner_bottom li a,
+section .content .banner_bottom li a img{
+    display: block;
+    width: 198px;
+    height: 160px;
+    position: relative;
+}
+section .content .banner_bottom li .cover{
+    display: block;
+    width: 198px;
+    height: 160px;
+    background-color: #000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.04;
+}
 section .inner .home_nav{
     float: left;
     width: 202px;

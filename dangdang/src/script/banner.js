@@ -50,11 +50,11 @@
                 if (settings.type == "ppt") {
                     changetype(settings.type, index);
                     if (index < 0) {
-                        index = _this.find(settings.btn).size() - 1;
+                        index = _this.find(settings.items).size() - 1;
                     }
                 } else {
                     if (index < 0)
-                        index = _this.find(settings.btn).size() - 1;           
+                        index = _this.find(settings.items).size() - 1;           
                     changetype(settings.type, index);
                 }
             })
@@ -62,11 +62,11 @@
                 index++;
                 if (settings.type == "ppt") {
                 changetype(settings.type, index);
-                if (index >= _this.find(settings.btn).size() ) {
+                if (index >= _this.find(settings.items).size() ) {
                         index = 0;
                     }
                 } else {
-                    if (index > _this.find(settings.btn).size() - 1)
+                    if (index > _this.find(settings.items).size() - 1)
                         index = 0;
                     changetype(settings.type, index);
                 }
@@ -79,7 +79,7 @@
                 _this.find(settings.btn).eq(a).addClass('active').siblings().removeClass('active');
                 _this.find(settings.items).eq(a).stop(true).animate({
                     opacity: 1
-                }, 1000).siblings().animate({
+                }, 1000).siblings().not('.banner_prev').not('.banner_next').animate({
                     opacity: 0
                 }, 1000)
             }
