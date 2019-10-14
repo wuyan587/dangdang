@@ -896,6 +896,7 @@ section .inner .home_nav .top{
     font-size: 12px;
 }
 .book_right_content li.item .name a {
+    display: block;
     line-height: 20px;
 }
 .book_right_content li.item .name a span {
