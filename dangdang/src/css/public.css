@@ -1,9 +1,13 @@
 *{
     font-size: 12px;
+    
+}
+a{
+    color: #666;
     text-decoration: none;
 }
 a:hover{
-     color: red;
+     color: red!important;
      text-decoration: underline;
 
 }

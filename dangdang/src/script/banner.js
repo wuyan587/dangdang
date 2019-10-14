@@ -4,6 +4,8 @@
     给向左按钮加个banner_prev
     给向右按钮加个banner_next
     type的类型为'normal'和'opacity','ppt'
+    time:轮播间隔
+    activename:小按钮，你要激活时候加的类名
 */
 (function ($) {
     $.fn.banner = function (options) {
@@ -13,10 +15,18 @@
             prev: $('.banner_prev'),
             next: $('.banner_next'),
             type: 'normal',
-            time:1000
+            time:1000,
+            activename:'active',
+            itemswidth:''
         }
         $.extend(settings, options);
-        let index = 0, timer = null, _this = $(this), $width = $(this).find(settings.items).first().width();
+        
+        let index = 0, timer = null, _this = $(this),$width=0;
+        if(settings.itemswidth){
+            $width=settings.itemswidth;
+        }else{
+            $width= $(this).find(settings.items).first().width();
+        }
         init(settings.type);
         $(this).each(function () {
             let _this = $(this);
@@ -73,11 +83,11 @@
                 }
             })
             function normalchange(a) {
-                _this.find(settings.btn).eq(a).addClass('active').siblings().removeClass('active');
+                _this.find(settings.btn).eq(a).addClass(settings.activename).siblings().removeClass(settings.activename);
                 _this.find(settings.items).eq(a).show().siblings().hide();
             }
             function opchange(a) {
-                _this.find(settings.btn).eq(a).addClass('active').siblings().removeClass('active');
+                _this.find(settings.btn).eq(a).addClass(settings.activename).siblings().removeClass(settings.activename);
                 _this.find(settings.items).eq(a).stop(true).animate({
                     opacity: 1
                 }, 1000).siblings().not('.banner_prev').not('.banner_next').animate({
@@ -86,21 +96,21 @@
             }
             function pptchange(a) {
                 if (a <= -1) {
-                    _this.find(settings.btn).eq(_this.find(settings.btn).length-1).addClass('active').siblings().removeClass('active');
+                    _this.find(settings.btn).eq(_this.find(settings.btn).length-1).addClass(settings.activename).siblings().removeClass(settings.activename);
                     _this.find('.banner_item').stop(true).animate({
                         left: -$width * (a+1)
                     },function(){
                         $(this).css("left",-$width *  _this.find(settings.btn).length)
                     })
                 } else if (a >= _this.find(settings.items).length) {
-                    _this.find(settings.btn).eq(0).addClass('active').siblings().removeClass('active');
+                    _this.find(settings.btn).eq(0).addClass(settings.activename).siblings().removeClass(settings.activename);
                     _this.find('.banner_item').stop(true).animate({
                         left: -$width * (a+1)
                     },function(){
                         $(this).css("left",-$width)
                     })
                 } else {
-                    _this.find(settings.btn).eq(a).addClass('active').siblings().removeClass('active');
+                    _this.find(settings.btn).eq(a).addClass(settings.activename).siblings().removeClass(settings.activename);
                     _this.find('.banner_item').stop(true).animate({
                         left: -$width * (a+1)
                     })
@@ -136,6 +146,7 @@
                     })
                     break;
                 case 'ppt':
+                    
                     _this.find(settings.items).each(function () {
                         $(this).show().css({
                             opacity: 1,

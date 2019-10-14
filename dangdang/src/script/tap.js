@@ -3,6 +3,7 @@
         let settings = {
             btn: $('.tap_btn').children(),
             items: $('.tap_item').children(),
+            
         }
         $.extend(settings, options);
         $(this).each(function(){
