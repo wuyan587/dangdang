@@ -79,6 +79,7 @@ section{
     top:0;
     left: 0;
     cursor: move;
+    display: none;
 }
 /* 大图大放 */
 .big{

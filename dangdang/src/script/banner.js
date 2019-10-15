@@ -7,6 +7,8 @@
     time:轮播间隔
     activename:小按钮，你要激活时候加的类名
 */
+require(['config'], function () { //调用config配置模块
+    require(['jquery', 'jqcookie'], function (jQuery) { //加载模块
 (function ($) {
     $.fn.banner = function (options) {
         let settings = {
@@ -169,3 +171,6 @@
         }
     }
 })(jQuery)
+
+    })
+})
