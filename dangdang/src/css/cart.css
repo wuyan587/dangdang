@@ -111,6 +111,10 @@ a.checknow{
     margin: 0 10px 0 0;
     vertical-align: text-bottom;
 }
+a.checkon{
+    border-color: #ff2832;
+    background: #ff2832 url(../img/icon_sprite.png) no-repeat -65px -1px;
+}
 .shop_title .f1{
     width: 202px;
     text-align: left;

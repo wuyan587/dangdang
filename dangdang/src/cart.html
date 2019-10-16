@@ -64,7 +64,7 @@
     <div class="content">
         <div class="warp">
             <ul class="shop_title">
-                <li class="f1"><a id="j_selectall" href="javascript:void(0)" class="checknow fn-checkall check_on"
+                <li class="f1"><a id="j_selectall" href="javascript:void(0)" class="checknow fn-checkall check_on checkon"
                         dd_name="全选">选中</a>全选</li>
                 <li class="f2">商品信息</li>
                 <li class="f3">单价（元）</li>
@@ -76,9 +76,9 @@
                 <table border="0" cellspacing="0" cellpadding="0" class="shop_Ttitle">
                     <tbody>
                         <tr>
-                            <td><a href="" class="checknow fn-shop-checkall check_on">选中</a></td>
+                            <td><a href="javascript:;" class="checknow fn-shop-checkall check_on ">选中</a></td>
                             <td><span class="shop_icon"></span></td>
-                            <td><a href="" target="_blank" style="font-size:12px;">当当自营</a></td>
+                            <td><a href="javascript:;" target="_blank" style="font-size:12px;">当当自营</a></td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -86,19 +86,63 @@
                 </table>
                 <div class="shop_list">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tbody>
-                            <tr id="" class="bb_none tree_first ">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="clearshop">
+            <div class="clearshop_right">
+                <a href="" class="total_btn">结算</a>
+                <div class="money">
+                    <p>
+                        <span>总计(不含运费)：</span>
+                        <span class='price'>0</span>
+                    </p>
+                    <p>
+                        <span>已节省：</span>
+                        <span>0.00</span>
+                    </p>
+                </div>
+            </div>
+            <div class="clearshop_left">
+                <a href="javascript:;" class="checknow fn-checkall checkon">选中</a>全选
+                <a href="javascript:;" class="delete">批量删除</a>
+                <span>已选择
+                    <i color="red">1</i>
+                    件商品</span>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script>
+    if($.cookie('sid')&&$.cookie('num')){
+        let htmlstr='',linkurl = 'http://10.31.155.71/dangdang/dangdang/src/detail.html?';
+        for(let i of $.cookie('sid').split(',')){
+            $.ajax(
+                {
+                    type:'get',
+                    url:"http://10.31.155.71/dangdang/dangdang/php/goodslist.php",
+                    data:{
+                        sid:i
+                    },
+                    dataType:'json'
+                }
+            ).done(function(data){
+                htmlstr+=`  <tbody>
+                            <tr id="" sid='${data.sid}' class="bb_none tree_first ">
                                 <td class="row1">
-                                    <a href="" class="checknow">选中</a>
+                                    <a href="javascript:;" class="checknow checkon">选中</a>
                                 </td>
                                 <td class="row_img">
-                                    <a href="http://product.dangdang.com/23490618.html" target="_blank">
-                                        <img src="http://img3x8.ddimg.cn/96/21/23490618-1_m_1.jpg" width="80"
+                                    <a href="${linkurl + 'sid=' + data.sid}" target="_blank">
+                                        <img src="${data.url}" width="80"
                                             height="80">
                                     </a>
                                     <div style="display: none;" class="img_big">
-                                        <a href="http://product.dangdang.com/23490618.html" target="_blank">
-                                            <img src="http://img3x8.ddimg.cn/96/21/23490618-1_b_1.jpg">
+                                        <a href="${linkurl + 'sid=' + data.sid}" target="_blank">
+                                            <img src="${data.url}">
                                         </a>
                                         <span class="arrow">
                                         </span>
@@ -106,25 +150,25 @@
                                 </td>
                                 <td class="row_name">
                                     <div class="name">
-                                        <a href="http://product.dangdang.com/23490618.html" title="平行宇宙（新版）"
+                                        <a href="${linkurl + 'sid=' + data.sid}" title="平行宇宙（新版）"
                                             target="_blank"
-                                            style="word-break:break-all;  word-wrap:break-word;">平行宇宙（新版）</a></div>
+                                            style="word-break:break-all;  word-wrap:break-word;">${data.title}</a></div>
                                 </td>
                                 <td class="row3">
-                                    <span>¥28.00</span></td>
+                                    <span>${data.nprice}</span></td>
                                 <td class="fn-count-tip row3 ">
                                     <span class="amount ">
-                                        <a href="">-</a><input value="1" type="text">
-                                        <a href="">+</a></span></td>
+                                        <a href="javascript:;" class='del'>-</a><input value="${$.cookie('num').split(',')[$.cookie('sid').split(',').indexOf(i)]}" type="text">
+                                        <a href="javascript:;" class='add'>+</a></span></td>
                                 <td class="row4">
-                                    <span class="red">¥28.00</span>
+                                    <span class="red">￥${(data.nprice*100)*($.cookie('num').split(',')[$.cookie('sid').split(',').indexOf(i)]/100)}</span>
                                 </td>
                                 <td class="row5 ">
                                     <span>
-                                        <a href="" class="fn-add-wish">移入收藏</a>
+                                        <a href="javascript:;" class="fn-add-wish">移入收藏</a>
                                     </span>
                                     <span>
-                                        <a href="" class="fn-remove-product">删除</a>
+                                        <a href="javascript:;" class="fn-remove-product">删除</a>
                                     </span>
                                 </td>
                             </tr>
@@ -141,47 +185,131 @@
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr class="total">
-                                <td class="row1">&nbsp;</td>
-                                <td class="row_img">店铺合计</td>
-                                <td colspan="2">&nbsp;</td>
-                                <td colspan="3" class="row4">
-                                    <span class="red big ooline alignright">¥28.00</span>
-                                    <span class="shipping_tip">
-                                        满49元包邮
-                                        <a href="javascript:;" class="more">免运费凑单</a></span></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-
-        </div>
-        <div class="clearshop">
-            <div class="clearshop_right">
-                <a href="" class="total_btn">结算</a>
-                <div class="money">
-                    <p>
-                        <span>总计(不含运费)：</span>
-                        <span class='price'>¥28.00</span>
-                    </p>
-                    <p>
-                        <span>已节省：</span>
-                        <span>0.00</span>
-                    </p>
-                </div>
-            </div>
-            <div class="clearshop_left">
-                <a href="" class="checknow">选中</a>全选
-                <a href="" class="delete">批量删除</a>
-                <span>已选择
-                    <i color="red">1</i>
-                    件商品</span>
-            </div>
-        </div>
-    </div>
+                        </tbody>`
+                        $('.shop_list table').html(htmlstr);
+                        // console.log(htmlstr);
+                        let z=0;
+                        $('.row4 span').each(function(){
+                            z+=+($(this).html().substring(1)*100);
+                        })
+                        $('.money p:first span:last').html(z/100);
+                        $('input').on('blur',function(){
+                            num=$(this).parent().find('input').val();
+                            zonjia($(this),num);
+                            jiage();
+                        })
+                        let num=0,price=0;
+                        numb();
+                        $('.amount .add').on('click',function(){
+                             num=$(this).parent().find('input').val();
+                             console.log($(this).parentsUntil('tbody').find('.row4 span'));
+                                num++;
+                                zonjia($(this),num)
+                                setcookie($(this));
+                                // z=0;
+                                // price=num* ($(this).parentsUntil('tbody').find('.row3 span').html()*100);
+                                // $(this).parent().find('input').val(num);
+                                // $(this).parentsUntil('tbody').find('.row4 span').html('￥'+price/100);
+                                jiage();
+                        })
+                        $('.amount .del').on('click',function(){
+                                num=$(this).parent().find('input').val();
+                                num--;
+                                if(num<0)
+                                num=0;
+                                zonjia($(this),num)
+                                setcookie($(this));
+                                // price=num* ($(this).parentsUntil('tbody').find('.row3 span').html()*100);
+                                // $(this).parent().find('input').val(num);
+                                // $(this).parentsUntil('tbody').find('.row4 span').html('￥'+price/100);
+                                // jiage();
+                        
+                        })
+                        let chosebtn=$('.checknow').not('.fn-checkall').not('.fn-shop-checkall');
+                        chosebtn.on('click',function(){     
+                            if($(this).hasClass('checkon')){
+                                $(this).removeClass('checkon')}else{
+                            $(this).addClass('checkon');   
+                        }
+                        if(chosebtn.filter('.checkon').length==chosebtn.length){
+                                $('.fn-checkall').addClass('checkon');
+                            }else{
+                                $('.fn-checkall').removeClass('checkon');
+                            }
+                            numb();
+                            jiage();
+                        })
+                        $('.fn-remove-product').on('click',function(){
+                            delcookie($(this));
+                             $(this).parentsUntil('tbody').parent().remove();
+                             jiage()
+                             numb();
+                        })
+                        $('.delete').on('click',function(){
+                            $('.checkon').each(function(){
+                                delcookie($(this));
+                                $(this).parentsUntil('tbody').parent().remove();
+                            })
+                            numb();
+                            jiage();
+             
+                        })
+                        console.log($('.fn-checkall'));
+                        $('.fn-checkall').on('click',function(){
+                            if($(this).hasClass('checkon')){
+                                console.log(1);
+                                $('.fn-checkall').removeClass('checkon');
+                                chosebtn.removeClass('checkon');
+                            }else{
+                                console.log(2);
+                                $('.fn-checkall').addClass('checkon');
+                                chosebtn.addClass('checkon');
+                        }
+                        numb();
+                        jiage();
+                        })
+                        function jiage(){
+                            z=0;
+                            $('.shop_list').find('.checkon').parentsUntil('tbody').find('.row4 span').each(function(){
+                            z+=+($(this).html().substring(1)*100);
+                        })
+                        $('.money p:first span:last').html(z/100);
+                        }
+                        function zonjia(obj,num){
+                                price=num* (obj.parentsUntil('tbody').find('.row3 span').html()*100);
+                                obj.parent().find('input').val(num);
+                                obj.parentsUntil('tbody').find('.row4 span').html('￥'+price/100);
+                                jiage();
+                        }
+                        function setcookie(obj){
+                            let n=obj.parentsUntil('tbody').find('input').val();     
+                            let a= obj.parentsUntil('tbody').parent().find('tr').attr('sid');
+                            let b=$.cookie('sid').split(',');
+                            let c=$.cookie('num').split(',');
+                            c[b.indexOf(a)]=n;
+                            $.cookie('sid',b);
+                            $.cookie('num',c);
+                        }
+                        function delcookie(obj){
+                            let a= obj.parentsUntil('tbody').parent().find('tr').attr('sid');
+                            let b=$.cookie('sid').split(',');
+                            let c=$.cookie('num').split(',');
+                            b.splice(b.indexOf(a),1);
+                            console.log(b);
+                            c.splice(b.indexOf(a),1);
+                            console.log(c);
+                            $.cookie('sid',b);
+                            $.cookie('num',c);
+                        }
+                        function numb(){
+                         $('.clearshop_left span i').html($('.shop_list').find('.checkon').length) ;  
+                        }
+                    })
+        }
+        
+        
+    }
+    </script>
 </body>
 
 </html>

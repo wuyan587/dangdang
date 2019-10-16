@@ -1,1 +1,1 @@
-require(['xuanran','banner']);console.log(1);
+require(['xuanran','banner']);

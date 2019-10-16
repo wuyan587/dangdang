@@ -460,7 +460,7 @@ section{
     float: left;
     width: 567px;
 }
-.buybtn a{
+.buybtn button{
     display: block;
     height: 36px;
     font: 16px/36px "Microsoft Yahei";

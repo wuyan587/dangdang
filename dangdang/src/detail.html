@@ -342,15 +342,15 @@
                         <!-- 购买 -->
                         <div class="p_buybox">
                             <div class="num">
-                                <input type="text">
-                                <a href="" class="add"></a>
-                                <a href="" class="del"></a>
+                                <input type="text" value="1">
+                                <a href="javascript:;" class="add"></a>
+                                <a href="javascript:;" class="del"></a>
                             </div>
                             <div class="buybtn">
-                                <a href="" class="buycart">
+                                <button class="buycart">
                                     <i></i>
-                                    加入购物车</a>
-                                <a href="" class="buynow">立即购买</a>
+                                    加入购物车</button>
+                                <button class="buynow">立即购买</button>
                             </div>
                         </div>
                     </div>
@@ -359,12 +359,13 @@
         </div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script>
         $.ajax({
             type:'get',
             url:"http://10.31.155.71/dangdang/dangdang/php/goodslist.php",
             data:{
-                sid:location.search.substring(1).split('=')[1]
+                 sid:location.search.substring(1).split('=')[1]
             },
             dataType:'json'
         }).done(function(datarr){
@@ -410,7 +411,8 @@
                 this.pyx = 0;
                 this.pyy = 0;
                 this.gl=0;
-                
+                this.cookie=[];
+                this.cookienum=[];
             }
             init() {
                 this.gl=$(window).scrollTop();
@@ -434,6 +436,8 @@
                    
                 })
                 this.choose(this.link);
+                this.buy();
+                this.cart()
              
             }
             yidong(obj) {
@@ -479,6 +483,65 @@
                         $(this).removeClass("chose");
                     })
                     $(this).addClass("chose");
+                })
+            }
+            buy(){
+                let num=0;
+                $('.p_buybox .add').on('click',function(){
+                    num=$('.p_buybox input').val();
+                    num++;
+                    $('.p_buybox input').val(num);
+                })
+                $('.p_buybox .del').on('click',function(){
+                    num=$('.p_buybox input').val();
+                    num--;
+                    if(num<0)
+                        num=0;
+                    $('.p_buybox input').val(num);
+                })
+            }
+            cart(){
+                let _this=this,sid=location.search.substring(1).split('=')[1];
+                if($.cookie('sid')&&$.cookie('num')){
+                    this.cookie=this.cookie.concat($.cookie('sid').split(','));
+                    this.cookienum=this.cookienum.concat($.cookie('num').split(','));
+            }else{
+                    
+                }
+                if($.cookie('num')==undefined){
+                this.cookienum=[];
+            }else{
+                    
+                }
+                
+                console.log(this.cookie,this.cookienum);
+                $('.buycart').on('click',function(){
+                    alert('加入完成');
+                    if(_this.cookie.indexOf(sid)!=-1){
+                        _this.cookienum[_this.cookie.indexOf(sid)]=Number(_this.cookienum[_this.cookie.indexOf(sid)])+Number($('.p_buybox input').val());
+                    }else{
+                        _this.cookie.push(sid);
+                        _this.cookienum.push($('.p_buybox input').val());
+                    }
+                    
+                //     for(let i in _this.cookie){
+                        
+                //         console.log(i,_this.cookie[i]);
+                // if(location.search.substring(1).split('=')[1]==_this.cookie[i]){
+                //             _this.cookienum[i]=Number(_this.cookienum[i])+Number($('.p_buybox input').val());
+                //             return 0;
+                //     }else{
+                //          _this.cookie.push(location.search.substring(1).split('=')[1]);
+                //          _this.cookienum.push($('.p_buybox input').val());
+                //     }
+    
+                // }
+                    // _this.cookie.push(location.search.substring(1).split('=')[1]);
+                    // _this.cookienum.push($('.p_buybox input').val());
+                     console.log(_this.cookie,_this.cookienum);
+                    $.cookie('sid',_this.cookie);
+                    $.cookie('num',_this.cookienum);
+                    location.href='http://10.31.155.71/dangdang/dangdang/src/cart.html';
                 })
             }
         }
