@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>登录 - 当当网</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/login.css">
+    <!-- <script src="script/require.js" defer async="true" data-main="script/main.js"></script> -->
+
 </head>
 
 <body>
     <header class="login_header">
-        <a href="">
+        <a href="http://10.31.155.71/dangdang/dangdang/src/index.html">
             <img src="../src/img/logo.png" alt="">
         </a>
         <div class="opinion">
@@ -36,13 +38,11 @@
                     <p>密码登陆</p>
                     <div class="username">
                         <span></span><input type="text" placeholder="邮箱/昵称/手机号码">
-
                     </div>
-                    <p>1</p>
+                    <p class="tip">&nbsp;</p>
                     <div class="password"><span></span><input type="password" placeholder="密码">
-
                     </div>
-                    <p>1</p>
+                    <p class="tip">&nbsp;</p>
                     <div class="Vcode">
                         <div class="Vcode-operate"><label class="Vcode-prompt">请点击下方图片，旋转至正确方向</label><label
                                 class="error is-visible">请点击下方图片，旋转至正确方向</label><a class="Vcode-refresh">换一组</a></div>
@@ -65,11 +65,11 @@
                             style="display: none;">七天内自动登录</span><span class="safe"
                             style="display: inline-block;">请勿在公用电脑上勾选此选项</span>
                     </p>
-                    <a href="" class="submit">
+                    <a href="javascript:;" class="submit">
                         登&nbsp;陆
                     </a>
                     <p class="register">
-                        <a class="register_btn" href="">立即注册</a>
+                        <a class="register_btn" href="http://10.31.155.71/dangdang/dangdang/src/register.html">立即注册</a>
                         <span>使用合作网站登录</span>
                     </p>
                     <div class="partner clearfix" id="share_login">
@@ -93,6 +93,8 @@
 
         </div>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../src/script/login.js"></script>
 </body>
 
 </html>

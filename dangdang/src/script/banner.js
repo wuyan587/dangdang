@@ -92,9 +92,9 @@ require(['config'], function () { //调用config配置模块
                 _this.find(settings.btn).eq(a).addClass(settings.activename).siblings().removeClass(settings.activename);
                 _this.find(settings.items).eq(a).stop(true).animate({
                     opacity: 1
-                }, 1000).siblings().not('.banner_prev').not('.banner_next').animate({
+                }).siblings().not('.banner_prev').not('.banner_next').animate({
                     opacity: 0
-                }, 1000)
+                })
             }
             function pptchange(a) {
                 if (a <= -1) {
@@ -140,7 +140,8 @@ require(['config'], function () { //调用config配置模块
                 case 'opacity':
                     _this.find(settings.items).each(function () {
                         $(this).show().css({
-                            opacity: 0
+                            opacity: 0,
+                            position: 'absolute'
                         });
                     })
                     _this.find(settings.items).eq(index).css({

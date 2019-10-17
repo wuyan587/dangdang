@@ -1,9 +1,11 @@
 require(['config'], function () { //调用config配置模块
-    require(['jquery','banner', 'jqcookie'], function ($) { //加载模块
-        require(['jqlazyload'], function () { 
+    require(['jquery','jqcookie'], function ($) { //加载模块
+        require(['jqlazyload','effect'], function (m1,m2) { 
         (function () {
 
-            let linkurl = 'http://10.31.155.71/dangdang/dangdang/src/detail.html?';
+          
+  let linkurl = 'http://10.31.155.71/dangdang/dangdang/src/detail.html?';
+            //渲染banner图
             $.ajax({
                 type: 'post',
                 url: "http://10.31.155.71/dangdang/dangdang/php/goodslist.php",
@@ -158,48 +160,18 @@ require(['config'], function () { //调用config配置模块
                                 htmlstr += `</ul>`;
                                 num = 0;
                             }
-                            // } else {
-                            //     htmlstr += `<li><a href=""
-                            //         target="_blank" title="">
-                            //         <img src="${value}" title="" alt="">
-                            //         </span></a></li>`
-                            // }
                             num++;
                         }
                         htmlstr += `</ul>`
                         $('.floor_bottom_warp').html(htmlstr);
                     }
                 }
-                $('.banner_home').banner({
-                    type: 'ppt'
-                });
-                $('.book_banner_1').banner({
-                    type: 'ppt',
-                    activename: 'on'
-                });
-                $('.book_banner_floor_1').banner({
-                    type: 'ppt',
-                    time: 3000,
-                    activename: 'on'
-                });
-                $('.floor_bottom').banner({
-                    items: $('.floor_bottom ul'),
-                    type: 'ppt',
-                    time: 2000
-                });
-                $('.banner_top').banner({
-                    type: 'opacity',
-                    time: 2000
-                });
-                $('.banner_bottom').banner({
-                    items: $('.banner_bottom ul'),
-                    type: 'opacity',
-                    time: 2000
-                });
+                m2.bannereffect();
                 $("img").lazyload({
                     effect : "fadeIn"
                 });
             })
+            //渲染商品
             $.ajax({
                 type: 'post',
                 url: "http://10.31.155.71/dangdang/dangdang/php/goodslist.php",
@@ -208,7 +180,7 @@ require(['config'], function () { //调用config配置模块
                 },
                 dataType: 'json'
             }).done(function (datarr) {
-                let htmlstr = '', htmlstr2 = '', htmlstr3 = '', htmlstr4 = '', num = 1, num2 = 0;
+                let htmlstr = '', htmlstr2 = '', htmlstr3 = '', htmlstr4 = '', htmlstr5 = '', num = 1, num2 = 0;
                 for (let value of datarr) {
                     if (num == 1) {
                         htmlstr2 += `<li class="line1" style='display:none'>
@@ -333,6 +305,24 @@ require(['config'], function () { //调用config配置模块
                                 </li>
                             </ul>`
                     }
+                    if(num<6){
+                        htmlstr5+=`<li><a href=""><img src="http://img60.ddimg.cn/2019/7/30/201907301506413180.png" class="bg">
+                        <div class="p_info">
+                            <div class="tag_t"><span class="t_l"></span><span class="name">1分抽奖</span><span class="t_l t_r"></span></div>        
+                            <div id="pr_img_4" class="sp" style="">
+                                    <div class="pic_section"><img src="${value.url}"></div>
+                                    <div class="t_name">${value.title}</div>
+                                    <div class="label"><span class="b_label">仅剩2天12小时</span></div>
+                                    <div class="price"><span class="price_n">¥0.01</span><span class="price_o">¥${value.nprice}</span></div>
+                                    <div class="go_icon"></div>
+                            </div>
+                            <div id="pr_qr_4" class="zz"  style="">
+                                <div class="pic_section"><img src="http://img61.ddimg.cn/2019/7/18/2019071818032447136.jpg"></div>
+                                <div style="width:150px;margin:16px auto 0;"><img style="width:150px" src="http://img63.ddimg.cn/2019/8/24/2019082415442534569.png"></div>
+                            </div>
+                        </div>
+                    </a></li>`
+                                        }
                     num2++;
                     num++;
                 }
@@ -340,18 +330,13 @@ require(['config'], function () { //调用config配置模块
                 $('.book_muen_content ul').html(htmlstr);
                 $('.book_right_content').html(htmlstr2);
                 $('.miao .content').html(htmlstr3);
+                $('.act_bottom').html(htmlstr5);
+                m2.other();
                 $("img").lazyload({
                     effect : "fadeIn"
                 });
-                $('.book_muen_content ul').on('mouseenter', 'li', function () {
-                    $(this).addClass('hover').siblings().removeClass('hover');
-                })
-                $('.book_right_content').on('mouseenter', '.line1', function (ev) {
-                    $(this).hide().siblings('.book_right_content .line1').show();
-                    $('.line2').eq($(this).index('.book_right_content .line1')).show().siblings('.line2').hide();
-
-                })
             })
+            //渲染其他模块
             $.ajax({
                 type: 'post',
                 url: "http://10.31.155.71/dangdang/dangdang/php/goodslist.php",
@@ -426,13 +411,6 @@ require(['config'], function () { //调用config配置模块
                             }
                             hstr3 += '</div>';
                             $('.youping .mod_middle').html(hstr3);
-                            // hstr1='',num=0;
-                            // for(let value of bvalue.surl.split('，')){
-                            //     if(num<10)
-                            //         hstr1+=` <li><a href=""><img src="${value}" alt=""></a></li>`;
-                            //         num++;  
-                            // }
-                            // $('.youping .mod_bottom ul').html(hstr1);
                             break;
                         case 'wju':
                             num = 0;

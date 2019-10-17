@@ -198,7 +198,10 @@
     color: #333;
 }
 .reg_body table .pass{
+    position: absolute;
+    display:none;
     margin-top: 14px;
+    left:280px;
     width: 16px;
     height: 16px;
     background: url(https://login.dangdang.com/images/icon_20150706.png) 0 -40px no-repeat;
@@ -250,6 +253,10 @@
     color: #fff;
     border-radius: 22px;
     margin-left: 50px;
+}
+.btn_login:hover{
+    text-decoration: none;
+    background-color: rgb(82, 36, 36);
 }
 .pic_company{
     padding-top: 10px;
