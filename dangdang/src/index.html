@@ -861,29 +861,6 @@
         </div>
     </div>
     <div id="publicfoot"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- <script src="./script/tap.js"></script> -->
-    <script>
-        $('#publictop').load('header.html');
-        $('#publicfoot').load('footer.html');
-        $('.inner aside').on('mousemove', function (ev) {
-            if (ev.target.nodeName == "LI") {
-                $(ev.target).addClass('on').siblings().removeClass('on');
-                $('.inner aside .content').show();
-            }
-
-        })
-        $('.inner aside').on('mouseleave', function () {
-            $('.inner aside ul li').removeClass('on');
-            $('.inner aside .content').hide();
-        })
-       
-
-
-
-
-
-    </script>
 </body>
 
 </html>

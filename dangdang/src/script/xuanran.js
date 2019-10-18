@@ -1,10 +1,8 @@
-require(['config'], function () { //调用config配置模块
-    require(['jquery','jqcookie'], function ($) { //加载模块
+require(['config'], function () { 
+    require(['jquery'], function ($) { 
         require(['jqlazyload','effect'], function (m1,m2) { 
-        (function () {
-
-          
-  let linkurl = 'http://10.31.155.71/dangdang/dangdang/src/detail.html?';
+        (function () {    
+            let linkurl = 'http://10.31.155.71/dangdang/dangdang/src/detail.html?';
             //渲染banner图
             $.ajax({
                 type: 'post',
@@ -449,17 +447,13 @@ require(['config'], function () { //调用config配置模块
                             }
                             $('.yyt .mod_bottom ul').html(hstr5);
                             break;
-
                     }
                 }
                 $("img").lazyload({
                     effect : "fadeIn"
                 });
             })
-           
         })()
-
-
     })
     })
 })

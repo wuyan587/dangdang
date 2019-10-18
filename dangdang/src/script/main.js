@@ -1,1 +1,1 @@
-require(['xuanran','banner']);
+require(['xuanran']);
